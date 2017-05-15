@@ -34,9 +34,16 @@ Inventory management system with API endpoints
    nvm install v7.9.0
    nvm use v7.9.0
    ```
+
    0.2 node sass global
    ```
    npm install node-sass -g
+   ```
+
+   0.3 auto reload nodejs server (optional)
+   ```
+   npm install nodemon -g
+   nodemon bin/www # or added it to scripts in package.json as watch
    ```
 1. Generate Express.js project [x]
    - ```npm install express-generator -g```
@@ -74,7 +81,18 @@ Inventory management system with API endpoints
 ### Milestone 2: Project structure
 1. Expressjs tokens authorization []
 
-   1.1 Unit test []
+   1.0 dependencies [x]
+   ```
+   npm install jsonwebtoken -S
+   ```
+   To configure:
+   - add app.js secret key [x]
+      - load the key from a config file []
+   - load the jwtwebtoken module [x]
+   - create a new route for login that returns JWT token [x]
+      - load the user from a mongodb User data []
+   
+   1.1 Unit test [x]
 
    1.2 Mongodb model []
 

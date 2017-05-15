@@ -8,10 +8,14 @@ var sassMiddleware = require('node-sass-middleware');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-
-var app = express();
+var authenticate = require('./routes/authenticate');
 
 // view engine setup
+
+var app = express();
+app.set('superSecret', 'mylittlesecret'); // secret variable
+
+var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -31,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/authenticate', authenticate);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
