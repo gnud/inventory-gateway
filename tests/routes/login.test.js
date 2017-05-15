@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 
 describe("Routes", function() {
     describe("Ask for JWT token", function() {
-        it("should return", function (done) {
+        it("login ok", function (done) {
             chai.request("localhost:3000")
                 .post('/authenticate')
                 .send({
@@ -16,6 +16,19 @@ describe("Routes", function() {
                 .end(function(err, res){
                     expect(res.status).to.equal(200);
                     expect(res.body.success).to.equal(true);
+                    done();
+                });
+        })
+
+        it("login bad", function (done) {
+            chai.request("localhost:3000")
+                .post('/authenticate')
+                .send({
+                    "password": "yourpassword"
+                })
+                .end(function(err, res){
+                    expect(res.status).to.equal(200);
+                    expect(res.body.success).to.equal(false);
                     done();
                 });
         })
