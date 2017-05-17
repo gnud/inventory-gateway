@@ -10,6 +10,16 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var authenticate = require('./routes/authenticate');
 var jwtmiddleware = require('./middlewares/jwt');
+var mongoose = require('mongoose');
+
+// TODO: put the database name in a config file
+mongoose.connect('mongodb://localhost/inventory');
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    console.log("db active ...");
+});
 
 
 // view engine setup
