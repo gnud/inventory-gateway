@@ -9,6 +9,8 @@ var sassMiddleware = require('node-sass-middleware');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var authenticate = require('./routes/authenticate');
+var jwtmiddleware = require('./middlewares/jwt');
+
 
 // view engine setup
 
@@ -34,8 +36,9 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/authenticate', authenticate);
+app.use('/api', jwtmiddleware);
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
