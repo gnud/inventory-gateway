@@ -90,30 +90,19 @@ Inventory management system with API endpoints
       - load the key from a config file []
    - load the jwtwebtoken module [x]
    - create a new route for login that returns JWT token [x]
-      - load the user from a mongodb User data []
+      - load the user from a mongodb User data [x]
    
    1.1 Unit test [x]
 
-   1.2 Mongodb model []
+   1.2 Mongodb model [x]
 
-2. Product Catalog []
+2. Product Catalog [x]
 
-   2.1 Unit test []
-
-   2.1 Mongodb model []
+   2.1 Mongodb model [x]
    
-   2.2 CRUD API []
+   2.2 CRUD API [x]
 
-3. Inventory management []
 
-   3.1 Unit test []
+4. Log of activities (auditing) [x]
 
-   3.1 Mongodb model []
-
-   3.2 CRUD API []
-
-4. Log off activity []
-
-   4.1 Unit test []
-
-   4.2 CRUD API []
+   4.2 CRUD API [x]
