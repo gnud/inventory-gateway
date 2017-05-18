@@ -6,6 +6,7 @@ var express = require('express');
 var router = express.Router();
 
 var jwt = require('jsonwebtoken');
+let config = require('../lib/config');
 
 // route middleware to verify a token
 router.use(function(req, res, next) {
@@ -17,7 +18,7 @@ router.use(function(req, res, next) {
     if (token) {
 
         // verifies secret and checks exp
-        jwt.verify(token, req.app.get('superSecret'), function(err, decoded) {
+        jwt.verify(token, config.JWTSecret, function(err, decoded) {
             if (err) {
                 return res.json({ success: false, message: 'Failed to authenticate token.' });
             } else {

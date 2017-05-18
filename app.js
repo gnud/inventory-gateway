@@ -8,26 +8,16 @@ var sassMiddleware = require('node-sass-middleware');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var products = require('./routes/product');
 var authenticate = require('./routes/authenticate');
 var jwtmiddleware = require('./middlewares/jwt');
-var mongoose = require('mongoose');
-
-// TODO: put the database name in a config file
-mongoose.connect('mongodb://localhost/inventory');
-
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-    console.log("db active ...");
-});
-
+var database = require('./lib/database');
 
 // view engine setup
 
 var app = express();
-app.set('superSecret', 'mylittlesecret'); // secret variable
+// app.set('superSecret', 'mylittlesecret'); // secret variable
 
-var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -46,9 +36,10 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/users', users);
 app.use('/authenticate', authenticate);
 app.use('/api', jwtmiddleware);
-app.use('/users', users);
+app.use('/api/products', products);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

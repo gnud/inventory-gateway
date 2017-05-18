@@ -6,12 +6,15 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "ejs": "~2.5.6",
     "express": "~4.15.2",
     "jsonwebtoken": "^7.4.0",
+    "log4js": "^1.1.1",
+    "log4js-node-mongodb": "^2.2.1",
     "mongoose": "^4.9.9",
     "morgan": "~1.8.1",
     "node-sass-middleware": "0.9.8",

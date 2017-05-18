@@ -8,7 +8,12 @@
 var mongoose = require("mongoose");
 
 var productSchema = mongoose.Schema({
-    _id: { type: Object },
+    _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        index: true,
+        required: true,
+        auto: true,
+    },
     "data" : {
         "SKU" : String,
         "name" : String,
